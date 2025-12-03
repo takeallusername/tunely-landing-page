@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tunely - 대화로 시작하는 앱 개발의 미래</title>
+    <meta name="description" content="아이디어를 말하면 Tunely가 필요한 것을 차례로 묻고, 설계안을 보여준 뒤, 실제로 동작하는 앱을 만들어드립니다.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        :root {
+            --primary: hsl(250, 84%, 54%);
+            --primary-dark: hsl(250, 84%, 44%);
+            --primary-light: hsl(250, 84%, 64%);
+            --accent: hsl(325, 78%, 56%);
+            --accent-light: hsl(325, 78%, 66%);
+
+            --bg-primary: hsl(240, 10%, 6%);
+            --bg-secondary: hsl(240, 8%, 10%);
+            --bg-tertiary: hsl(240, 6%, 14%);
+
+            --text-primary: hsl(0, 0%, 98%);
+            --text-secondary: hsl(0, 0%, 75%);
+            --text-tertiary: hsl(0, 0%, 55%);
+
+            --border: hsl(240, 6%, 20%);
+            --border-light: hsl(240, 6%, 25%);
+
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            --space-2xl: 4rem;
+            --space-3xl: 6rem;
+
+            --radius-sm: 0.5rem;
+            --radius-md: 0.75rem;
+            --radius-lg: 1rem;
+            --radius-xl: 1.5rem;
+            --radius-full: 9999px;
+
+            --transition-base: 250ms ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--space-md);
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        h3 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 700;
+        }
+
+        h4 {
+            font-size: clamp(1.25rem, 2vw, 1.5rem);
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 1.125rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: color var(--transition-base);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary-light), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-xs);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: var(--radius-full);
+            font-size: 1.0625rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            white-space: nowrap;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            box-shadow: 0 4px 24px rgba(124, 58, 237, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(124, 58, 237, 0.6);
+        }
+
+        .btn-secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-secondary);
+            border-color: var(--border-light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-3xl) 0;
+        }
+
+        .card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            transition: all var(--transition-base);
+        }
+
+        .card:hover {
+            border-color: var(--border-light);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 1.25rem;
+            padding-bottom: 1.25rem;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: var(--space-lg);
+        }
+
+        nav .nav-link {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        nav .nav-link:hover {
+            color: var(--text-primary);
+        }
+
+        /* Hero */
+        .hero {
+            padding: calc(80px + var(--space-3xl)) 0 var(--space-3xl);
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-3xl);
+            align-items: center;
+            min-height: 600px;
+        }
+
+        .hero-text {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-lg);
+        }
+
+        .hero-description {
+            font-size: 1.25rem;
+            line-height: 1.8;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .floating-card {
+            width: 100%;
+            max-width: 450px;
+            padding: var(--space-xl);
+            border-radius: var(--radius-xl);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .chat-bubble {
+            background: var(--bg-tertiary);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            margin-bottom: var(--space-md);
+        }
+
+        .chat-bubble.assistant {
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(236, 72, 153, 0.1));
+            border-color: var(--primary);
+        }
+
+        .chat-bubble p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        /* Section Header */
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto var(--space-3xl);
+        }
+
+        .section-header p {
+            font-size: 1.25rem;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: var(--space-md);
+        }
+
+        /* Steps */
+        .steps-container {
+            background: var(--bg-secondary);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr auto 1fr;
+            gap: var(--space-xl);
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .step {
+            text-align: center;
+            padding: var(--space-xl);
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            transition: all var(--transition-base);
+        }
+
+        .step:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 8px 32px rgba(124, 58, 237, 0.3);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto var(--space-md);
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: white;
+        }
+
+        .step-arrow {
+            font-size: 2rem;
+            color: var(--text-tertiary);
+        }
+
+        /* FAQ */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: var(--space-lg);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-grid .card h4 {
+            color: var(--text-primary);
+            margin-bottom: var(--space-sm);
+        }
+
+        /* Waitlist */
+        .waitlist-card {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: var(--space-3xl);
+            border-radius: var(--radius-xl);
+            text-align: center;
+        }
+
+        .waitlist-card h2 {
+            margin-bottom: var(--space-md);
+        }
+
+        .waitlist-card>p {
+            font-size: 1.125rem;
+            margin-bottom: var(--space-xl);
+        }
+
+        .waitlist-form {
+            display: flex;
+            gap: var(--space-md);
+            max-width: 500px;
+            margin: 0 auto var(--space-md);
+        }
+
+        .waitlist-form input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .waitlist-form input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .waitlist-note {
+            font-size: 0.875rem;
+            color: var(--text-tertiary);
+            margin-top: var(--space-lg);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            padding: var(--space-3xl) 0 var(--space-xl);
+            margin-top: var(--space-3xl);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 3fr;
+            gap: var(--space-3xl);
+            margin-bottom: var(--space-2xl);
+        }
+
+        .footer-brand .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: var(--space-md);
+        }
+
+        .tagline {
+            font-size: 1rem;
+            color: var(--text-tertiary);
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-xl);
+        }
+
+        .link-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+
+        .link-group h4 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .link-group a {
+            font-size: 0.9375rem;
+            color: var(--text-secondary);
+        }
+
+        .link-group a:hover {
+            color: var(--primary-light);
+        }
+
+        .footer-bottom {
+            padding-top: var(--space-xl);
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            font-size: 0.875rem;
+            color: var(--text-tertiary);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .step-arrow {
+                transform: rotate(90deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav .nav-links {
+                display: none;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-visual {
+                order: -1;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .hero-actions .btn {
+                width: 100%;
+            }
+
+            .features-grid,
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .waitlist-form {
+                flex-direction: column;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-links {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span class="gradient-text">Tunely</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="#features" class="nav-link">Features</a>
+                <a href="pricing.html" class="nav-link">Pricing</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+            </div>
+
+            <div>
+                <a href="#waitlist" class="btn btn-primary">Join Waitlist</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>
+                            Turn Your Ideas Into<br>
+                            <span class="gradient-text">Working Apps</span>
+                        </h1>
+                        <p class="hero-description">
+                            Tunely asks what you need through conversation, shows you the design,<br>
+                            then builds and deploys a working app
+                        </p>
+                        <div class="hero-actions">
+                            <a href="#waitlist" class="btn btn-primary">Join Early Access</a>
+                            <a href="#features" class="btn btn-secondary">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="floating-card glass">
+                            <div class="chat-bubble">
+                                <p>"I want to build a class schedule sharing app"</p>
+                            </div>
+                            <div class="chat-bubble assistant">
+                                <p>Great! Who will be the main users?</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Has App Development Ever Been <span class="gradient-text">This Easy?</span></h2>
+                    <p>Build fully functional apps through conversation alone</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="card">
+                        <div class="feature-icon">💬</div>
+                        <h3>Conversational Design</h3>
+                        <p>Answer simple questions and Tunely creates a design plan based on your choices</p>
+                    </div>
+
+                    <div class="card">
+                        <div class="feature-icon">🎨</div>
+                        <h3>UI Catalog</h3>
+                        <p>Choose from various component styles and see changes instantly in preview</p>
+                    </div>
+
+                    <div class="card">
+                        <div class="feature-icon">👁️</div>
+                        <h3>Live Preview</h3>
+                        <p>See your working app in the browser instantly, no installation required</p>
+                    </div>
+
+                    <div class="card">
+                        <div class="feature-icon">🚀</div>
+                        <h3>One-Click Deploy</h3>
+                        <p>Deploy directly to your Vercel·Supabase account with one click</p>
+                    </div>
+
+                    <div class="card">
+                        <div class="feature-icon">✏️</div>
+                        <h3>Edit via Chat</h3>
+                        <p>Continue refining your app through conversation even after it's built</p>
+                    </div>
+
+                    <div class="card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Automatic Quality Check</h3>
+                        <p>Automatic validation of performance, responsiveness, and accessibility</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section class="section steps-container">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Done in Just <span class="gradient-text">3 Steps</span></h2>
+                    <p>From idea to deployment in just 30 minutes</p>
+                </div>
+
+                <div class="steps-grid">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Describe Your Idea</h3>
+                        <p>Simply explain what app you want to build</p>
+                    </div>
+
+                    <div class="step-arrow">→</div>
+
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Answer & Approve</h3>
+                        <p>Choose features and review the design plan</p>
+                    </div>
+
+                    <div class="step-arrow">→</div>
+
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Preview & Deploy</h3>
+                        <p>See your working app and deploy it instantly</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Frequently Asked <span class="gradient-text">Questions</span></h2>
+                </div>
+
+                <div class="faq-grid">
+                    <div class="card">
+                        <h4>Do I need to know how to code?</h4>
+                        <p>No. Just answer questions and click OK. However, you need to decide what you want to build.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <h4>Will it really deploy to my account?</h4>
+                        <p>Yes. Tunely deploys to your account, and you retain full ownership.</p>
+                    </div>
+
+                    <div class="card">
+                        <h4>Can I hand it off to a developer later?</h4>
+                        <p>Yes. Export your entire project as .zip or to GitHub to hand off to any developer.</p>
+                    </div>
+
+                    <div class="card">
+                        <h4>Can I change components/themes?</h4>
+                        <p>Yes, anytime. Changes appear instantly in the preview.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Waitlist CTA -->
+        <section id="waitlist" class="section">
+            <div class="container">
+                <div class="waitlist-card glass">
+                    <h2>Join Early Access</h2>
+                    <p>Get notified at launch and receive exclusive benefits</p>
+
+                    <form class="waitlist-form"
+                        onsubmit="event.preventDefault(); alert('Thank you! We\'ll be in touch soon.');">
+                        <input type="email" placeholder="Enter your email address" required />
+                        <button type="submit" class="btn btn-primary">
+                            Join Waitlist
+                        </button>
+                    </form>
+
+                    <p class="waitlist-note">
+                        * Early access members receive bonus credits and priority access at launch
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="gradient-text">Tunely</span>
+                    </div>
+                    <p class="tagline">The future of app development through conversation</p>
+                </div>
+
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Product</h4>
+                        <a href="#features">Features</a>
+                        <a href="pricing.html">Pricing</a>
+                        <a href="#faq">FAQ</a>
+                    </div>
+
+                    <div class="link-group">
+                        <h4>Legal</h4>
+                        <a href="terms.html">Terms of Service</a>
+                        <a href="privacy.html">Privacy Policy</a>
+                    </div>
+
+                    <div class="link-group">
+                        <h4>Connect</h4>
+                        <a href="https://twitter.com" target="_blank">Twitter</a>
+                        <a href="https://github.com" target="_blank">GitHub</a>
+                        <a href="mailto:hello@tunely.app">Contact</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Tunely. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Tunely</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        :root {
+            --primary: hsl(250, 84%, 54%);
+            --primary-light: hsl(250, 84%, 64%);
+            --accent-light: hsl(325, 78%, 66%);
+            --bg-primary: hsl(240, 10%, 6%);
+            --bg-secondary: hsl(240, 8%, 10%);
+            --text-primary: hsl(0, 0%, 98%);
+            --text-secondary: hsl(0, 0%, 75%);
+            --text-tertiary: hsl(0, 0%, 55%);
+            --border: hsl(240, 6%, 20%);
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            --space-2xl: 4rem;
+            --space-3xl: 6rem;
+            --radius-lg: 1rem;
+            --radius-full: 9999px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary-light), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .btn {
+            display: inline-flex;
+            padding: 1rem 2rem;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            text-decoration: none;
+            background: linear-gradient(135deg, var(--primary), hsl(325, 78%, 56%));
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.25rem var(--space-md);
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: inherit;
+            text-decoration: none;
+        }
+
+        main {
+            padding-top: 100px;
+            min-height: 100vh;
+            padding-bottom: var(--space-3xl);
+        }
+
+        .legal-content {
+            max-width: 800px;
+            margin: var(--space-3xl) auto;
+            padding: var(--space-2xl);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+        }
+
+        h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            text-align: center;
+            margin-bottom: var(--space-md);
+        }
+
+        .last-updated {
+            text-align: center;
+            color: var(--text-tertiary);
+            font-size: 0.9375rem;
+            margin-bottom: var(--space-3xl);
+            padding-bottom: var(--space-xl);
+            border-bottom: 1px solid var(--border);
+        }
+
+        section {
+            margin-bottom: var(--space-2xl);
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            color: var(--text-primary);
+            margin-top: var(--space-xl);
+            margin-bottom: var(--space-md);
+            padding-bottom: var(--space-sm);
+            border-bottom: 2px solid var(--primary);
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            margin-top: var(--space-lg);
+            margin-bottom: var(--space-sm);
+        }
+
+        p {
+            margin-bottom: var(--space-md);
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        ul {
+            margin: var(--space-md) 0;
+            padding-left: var(--space-xl);
+        }
+
+        ul li {
+            margin-bottom: var(--space-sm);
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        a {
+            color: var(--primary-light);
+            text-decoration: underline;
+        }
+
+        footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            padding: var(--space-xl) 0;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.875rem;
+            color: var(--text-tertiary);
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span class="gradient-text">Tunely</span>
+            </a>
+            <a href="index.html#waitlist" class="btn">Join Waitlist</a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <article class="legal-content">
+                <h1>Terms of Service</h1>
+                <p class="last-updated">Last updated: January 1, 2025</p>
+
+                <section>
+                    <h2>1. Service Description</h2>
+                    <p>
+                        Tunely is a platform that enables users to design, create, and deploy web applications through a
+                        conversational interface.
+                        These terms define the rights and obligations regarding service usage.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>2. Service Usage</h2>
+                    <h3>2.1 Account</h3>
+                    <p>
+                        An account is required to use the service. Users are responsible for maintaining the accuracy
+                        and security of their account information.
+                    </p>
+
+                    <h3>2.2 Usage Restrictions</h3>
+                    <p>The following actions are prohibited:</p>
+                    <ul>
+                        <li>Creating illegal or harmful content</li>
+                        <li>Interfering with normal service operations</li>
+                        <li>Unauthorized use of another's account</li>
+                        <li>Reverse engineering or replicating the service</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>3. Payments and Refunds</h2>
+                    <h3>3.1 Payment Processing</h3>
+                    <p>
+                        All payments are processed through Paddle.com. Paddle is the Merchant of Record and manages
+                        payments.
+                        Paid plans are billed monthly and auto-renew.
+                    </p>
+
+                    <h3>3.2 Credits</h3>
+                    <p>
+                        Credits are the unit for service usage and are allocated monthly according to your plan.
+                        Unused credits do not roll over to the following month.
+                    </p>
+
+                    <h3>3.3 Consumer Right to Cancel (14-Day Refund Guarantee)</h3>
+                    <p>
+                        Consumers may cancel this agreement and request a refund within 14 days of purchase for any
+                        reason.
+                        The refund period is 14 days from the day after the transaction is completed.
+                    </p>
+                    <p>
+                        To request a refund, you must inform Tunely of your decision. It is sufficient to send your
+                        communication
+                        of your intention to cancel within the 14-day period. For immediate processing, contact our
+                        support team
+                        at support@tunely.app or use the cancellation form below.
+                    </p>
+
+                    <h4>Cancellation Form</h4>
+                    <p style="padding-left: var(--space-lg); font-style: italic; color: var(--text-tertiary);">
+                        To: Tunely Support Team<br>
+                        I hereby give notice that I cancel my contract for the sale of the following product:<br>
+                        Order date:<br>
+                        Order number:<br>
+                        Consumer name:<br>
+                        Consumer email:<br>
+                        Date:
+                    </p>
+
+                    <h3>3.4 Effects of Cancellation</h3>
+                    <p>
+                        If you cancel this agreement, we will reimburse all payments received from you.
+                        Reimbursement will be made within 14 days from the day we receive your cancellation notice.
+                        Refunds will be made using the same payment method used in the original transaction, and you
+                        will not incur any fees.
+                    </p>
+
+                    <h3>3.5 Exception to Right to Cancel</h3>
+                    <p>
+                        <strong>For Digital Content:</strong> Your right to cancel as a consumer does not apply to
+                        digital content
+                        that has started to be delivered, downloaded, or otherwise acquired. If you start creating an
+                        app or begin using
+                        the service, you consent to immediate performance and will lose your right to cancel this
+                        agreement.
+                    </p>
+
+                    <h3>3.6 Subscription Refund Policy</h3>
+                    <p>
+                        You can cancel subscriptions at any time, but no refunds will be provided for the unused portion
+                        of the current
+                        subscription period that has already been paid. Upon cancellation, you may continue to use the
+                        service until
+                        the end of the current billing period. To cancel your subscription, contact our support team at
+                        least 48 hours
+                        before the end of the current billing period.
+                    </p>
+                    <p>
+                        For subscriptions offering a free trial, if you decide to cancel before charges begin, you must
+                        cancel
+                        before the trial period expires.
+                    </p>
+
+                    <h3>3.7 Refund Policy</h3>
+                    <p>
+                        Refunds are provided on a case-by-case basis at Paddle's discretion. Refund requests may be
+                        denied if
+                        evidence of fraud, refund abuse, or other manipulative behavior is found.
+                    </p>
+                    <p>
+                        This policy does not affect consumer rights regarding products that are not as described,
+                        defective,
+                        or not fit for purpose.
+                    </p>
+
+                    <h3>3.8 Wire Transfer Payments</h3>
+                    <p>
+                        For wire transfer payments, you must provide accurate payment details (unique bank transfer
+                        reference number),
+                        company VAT/sales tax code, and order information. Wire transfer payments are not protected
+                        under the Consumer
+                        Credit Act (CCA) and are not eligible for refunds. However, for transactions including sales tax
+                        where the
+                        total amount is above $100 / £100 / €100, refunds may be available at Paddle's discretion.
+                    </p>
+
+                    <h3>3.9 Indirect Sales Tax Refund Policy</h3>
+                    <p>
+                        If sales tax was charged on your purchase and you are registered for sales tax in the country of
+                        purchase,
+                        you may be entitled to a refund of the sales tax amount if permitted by the laws of that
+                        country.
+                        Sales taxes include VAT, GST, Consumption Tax, and others.
+                    </p>
+                    <p>
+                        To receive a sales tax refund, you must contact Tunely within 60 days of completing the
+                        purchase.
+                        Refunds will only be processed upon providing a valid sales tax code for your country.
+                        All refund requests received after 60 days from the transaction date will not be processed.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>4. Refund Policy</h2>
+                    <h3>4.1 14-Day Money-Back Guarantee</h3>
+                    <p>
+                        We offer a 14-day money-back guarantee from the date of purchase. If you are not satisfied with
+                        Tunely
+                        for any reason, you may request a full refund within this period, no questions asked.
+                    </p>
+
+                    <h3>4.2 Refund Process</h3>
+                    <p>
+                        To request a refund within the 14-day guarantee period:
+                    </p>
+                    <ul>
+                        <li>Contact our support team at support@tunely.app</li>
+                        <li>Provide your order number and email address used for purchase</li>
+                        <li>Refunds will be processed within 5-7 business days</li>
+                        <li>Refunds are issued to the original payment method</li>
+                    </ul>
+
+                    <h3>4.3 After 14 Days</h3>
+                    <p>
+                        After the 14-day guarantee period, refunds are provided at Tunely's sole discretion on a
+                        case-by-case basis.
+                        We reserve the right to refuse refund requests if we find evidence of fraud, refund abuse, or
+                        other
+                        manipulative behavior.
+                    </p>
+
+                    <h3>4.4 Subscription Refunds</h3>
+                    <p>
+                        For subscription services, refunds are only available for the initial subscription period within
+                        14 days.
+                        There are no refunds on unused subscription periods after auto-renewal. You may cancel your
+                        subscription
+                        at any time to prevent future charges.
+                    </p>
+
+                    <h3>4.5 Payment Processing by Paddle</h3>
+                    <p>
+                        All payments and refunds are processed by our authorized payment processor, Paddle.com. Paddle
+                        acts as
+                        the Merchant of Record for all transactions. For payment-related inquiries, you may also contact
+                        Paddle's
+                        support team.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>5. Intellectual Property</h2>
+                    <h3>5.1 Generated Code</h3>
+                    <p>
+                        Users own the code and applications generated through Tunely.
+                    </p>
+
+                    <h3>5.2 Service</h3>
+                    <p>
+                        Tunely platform itself, interfaces, logos, etc. are owned by Tunely.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>6. Disclaimer</h2>
+                    <p>
+                        Tunely is provided "as is" without warranty of merchantability or fitness for a particular
+                        purpose.
+                        Users bear final responsibility for the quality, security, and performance of generated code.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>7. Deployment and External Services</h2>
+                    <p>
+                        Tunely supports deployment to external services such as Vercel and Supabase.
+                        Terms and costs of these services follow each provider's policies.
+                        Tunely is not responsible for outages or costs incurred by external services.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>8. Service Changes and Termination</h2>
+                    <p>
+                        Tunely may modify or terminate the service after prior notice.
+                        Upon service termination, users will be given sufficient time to export generated code.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>9. Privacy</h2>
+                    <p>
+                        For detailed information on personal data processing, please refer to our separate <a
+                            href="privacy.html">Privacy Policy</a>.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>10. Changes to Terms</h2>
+                    <p>
+                        Tunely may modify these terms as necessary, with at least 7 days' advance notice.
+                        If you do not agree to the revised terms, you may discontinue service usage.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>11. Governing Law and Jurisdiction</h2>
+                    <p>
+                        These terms shall be interpreted in accordance with the laws of the Republic of Korea, and the
+                        Seoul Central District Court shall have jurisdiction in case of disputes.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>12. Contact</h2>
+                    <p>
+                        For inquiries regarding these terms, please contact:
+                    </p>
+                    <p>
+                        Email: <a href="mailto:legal@tunely.app">legal@tunely.app</a>
+                    </p>
+                </section>
+            </article>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Tunely. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - Tunely</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        :root {
+            --primary: hsl(250, 84%, 54%);
+            --primary-light: hsl(250, 84%, 64%);
+            --accent: hsl(325, 78%, 56%);
+            --accent-light: hsl(325, 78%, 66%);
+            --bg-primary: hsl(240, 10%, 6%);
+            --bg-secondary: hsl(240, 8%, 10%);
+            --bg-tertiary: hsl(240, 6%, 14%);
+            --text-primary: hsl(0, 0%, 98%);
+            --text-secondary: hsl(0, 0%, 75%);
+            --text-tertiary: hsl(0, 0%, 55%);
+            --border: hsl(240, 6%, 20%);
+            --border-light: hsl(240, 6%, 25%);
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            --space-2xl: 4rem;
+            --space-3xl: 6rem;
+            --radius-md: 0.75rem;
+            --radius-lg: 1rem;
+            --radius-xl: 1.5rem;
+            --radius-full: 9999px;
+            --transition-base: 250ms ease;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: var(--space-md);
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+        }
+
+        h3 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+        }
+
+        p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary-light), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn {
+            display: inline-flex;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: var(--radius-full);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            box-shadow: 0 4px 24px rgba(124, 58, 237, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(124, 58, 237, 0.6);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 1.25rem;
+            padding-bottom: 1.25rem;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: inherit;
+            text-decoration: none;
+        }
+
+        main {
+            padding-top: 100px;
+            min-height: 100vh;
+        }
+
+        .pricing-hero {
+            padding: var(--space-3xl) 0 var(--space-2xl);
+            text-align: center;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-lg);
+            margin: var(--space-2xl) 0 var(--space-3xl);
+        }
+
+        .pricing-card {
+            position: relative;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            text-align: center;
+            transition: all var(--transition-base);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .pricing-card.popular {
+            border: 2px solid var(--primary);
+            transform: scale(1.05);
+        }
+
+        .badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 0.25rem 1rem;
+            border-radius: var(--radius-full);
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .price {
+            margin: var(--space-lg) 0;
+        }
+
+        .amount {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-light), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .period {
+            font-size: 1rem;
+            color: var(--text-tertiary);
+        }
+
+        .features {
+            list-style: none;
+            margin: var(--space-lg) 0;
+            text-align: left;
+        }
+
+        .features li {
+            padding: var(--space-sm) 0;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .usage-guide {
+            background: var(--bg-secondary);
+            padding: var(--space-2xl);
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--border);
+            margin-bottom: var(--space-3xl);
+        }
+
+        .usage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-xl);
+        }
+
+        .usage-item {
+            text-align: center;
+            padding: var(--space-lg);
+            background: var(--bg-primary);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+        }
+
+        .usage-amount {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-light), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: var(--space-sm);
+        }
+
+        .refund-policy {
+            background: var(--bg-secondary);
+            padding: var(--space-2xl);
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--border);
+            margin-top: var(--space-3xl);
+        }
+
+        .refund-policy h3 {
+            text-align: center;
+            margin-bottom: var(--space-md);
+        }
+
+        .refund-intro {
+            text-align: center;
+            font-size: 1.125rem;
+            margin-bottom: var(--space-xl);
+            color: var(--text-secondary);
+        }
+
+        .refund-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-lg);
+            margin-bottom: var(--space-lg);
+        }
+
+        .refund-item {
+            padding: var(--space-lg);
+            background: var(--bg-primary);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            transition: all var(--transition-base);
+        }
+
+        .refund-item:hover {
+            border-color: var(--border-light);
+            transform: translateY(-2px);
+        }
+
+        .refund-item h4 {
+            font-size: 1.125rem;
+            margin-bottom: var(--space-sm);
+            color: var(--text-primary);
+        }
+
+        .refund-item p {
+            font-size: 0.9375rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .refund-note {
+            text-align: center;
+            font-size: 0.875rem;
+            color: var(--text-tertiary);
+            margin-top: var(--space-lg);
+            padding-top: var(--space-lg);
+            border-top: 1px solid var(--border);
+        }
+
+        .refund-note a {
+            color: var(--primary-light);
+            text-decoration: underline;
+        }
+
+        footer {
+
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            padding: var(--space-xl) 0;
+            text-align: center;
+            margin-top: var(--space-3xl);
+        }
+
+        footer p {
+            font-size: 0.875rem;
+            color: var(--text-tertiary);
+        }
+
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.popular {
+                transform: scale(1);
+            }
+
+            .usage-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .refund-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .refund-policy {
+                padding: var(--space-lg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span class="gradient-text">Tunely</span>
+            </a>
+            <a href="index.html#waitlist" class="btn btn-primary">Join Waitlist</a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="pricing-hero">
+            <div class="container">
+                <h1>Simple, Transparent <span class="gradient-text">Pricing</span></h1>
+                <p style="font-size: 1.25rem;">Pay as you go with credits. No project limits.</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="badge">Free Trial</div>
+                    <h3>Free</h3>
+                    <div class="price">
+                        <span class="amount">$0</span>
+                        <span class="period">/mo</span>
+                    </div>
+                    <ul class="features">
+                        <li>✓ 10 credits/month</li>
+                        <li>✓ 1-2 previews</li>
+                        <li>✓ Try small edits</li>
+                        <li>✗ No deployment</li>
+                    </ul>
+                    <a href="index.html#waitlist" class="btn btn-primary"
+                        style="width: 100%; margin-top: var(--space-md);">Get Started</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Starter</h3>
+                    <div class="price">
+                        <span class="amount">$29</span>
+                        <span class="period">/mo</span>
+                    </div>
+                    <ul class="features">
+                        <li>✓ 200 credits/month</li>
+                        <li>✓ Run 1 small app</li>
+                        <li>✓ 1-2 deploys/edits per month</li>
+                        <li>✓ Vercel/Supabase deploy</li>
+                        <li>✓ Code export</li>
+                    </ul>
+                    <a href="index.html#waitlist" class="btn btn-primary"
+                        style="width: 100%; margin-top: var(--space-md);">Get Started</a>
+                </div>
+
+                <div class="pricing-card popular">
+                    <div class="badge">Popular</div>
+                    <h3>Pro</h3>
+                    <div class="price">
+                        <span class="amount">$79</span>
+                        <span class="period">/mo</span>
+                    </div>
+                    <ul class="features">
+                        <li>✓ 800 credits/month</li>
+                        <li>✓ Run 2-3 apps</li>
+                        <li>✓ 1-2 deploys/edits per week</li>
+                        <li>✓ Priority support</li>
+                        <li>✓ Advanced components</li>
+                    </ul>
+                    <a href="index.html#waitlist" class="btn btn-primary"
+                        style="width: 100%; margin-top: var(--space-md);">Get Started</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Team</h3>
+                    <div class="price">
+                        <span class="amount">$199</span>
+                        <span class="period">/mo</span>
+                    </div>
+                    <ul class="features">
+                        <li>✓ 2,500 credits/month</li>
+                        <li>✓ Run multiple apps</li>
+                        <li>✓ Team collaboration</li>
+                        <li>✓ Approval workflows</li>
+                        <li>✓ Dedicated support</li>
+                    </ul>
+                    <a href="index.html#waitlist" class="btn btn-primary"
+                        style="width: 100%; margin-top: var(--space-md);">Get Started</a>
+                </div>
+            </div>
+
+            <div class="usage-guide">
+                <h3 style="text-align: center;">Credit Usage Guide</h3>
+                <div class="usage-grid">
+                    <div class="usage-item">
+                        <div class="usage-amount">80-120</div>
+                        <p style="font-size: 0.9375rem;">Create initial app</p>
+                    </div>
+                    <div class="usage-item">
+                        <div class="usage-amount">40-80</div>
+                        <p style="font-size: 0.9375rem;">Major edit (add screen/data)</p>
+                    </div>
+                    <div class="usage-item">
+                        <div class="usage-amount">5-20</div>
+                        <p style="font-size: 0.9375rem;">Minor edit (text/color)</p>
+                    </div>
+                    <div class="usage-item">
+                        <div class="usage-amount">20-40</div>
+                        <p style="font-size: 0.9375rem;">One deployment</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="refund-policy">
+                <h3>Refund Policy</h3>
+                <p class="refund-intro">
+                    Tunely processes payments through Paddle.com and follows Paddle's 14-day refund guarantee policy.
+                </p>
+
+                <div class="refund-grid">
+                    <div class="refund-item">
+                        <h4>✓ 14-Day Guarantee</h4>
+                        <p>You can request a refund within 14 days of purchase for any reason.</p>
+                    </div>
+
+                    <div class="refund-item">
+                        <h4>⚠️ Digital Content Exception</h4>
+                        <p>Once you start creating an app or begin downloading, you consent to immediate performance and
+                            lose your right to cancel.</p>
+                    </div>
+
+                    <div class="refund-item">
+                        <h4>🔄 Subscription Refunds</h4>
+                        <p>You can cancel subscriptions anytime, but no refunds for unused portions. Service continues
+                            until the end of the current billing period.</p>
+                    </div>
+
+                    <div class="refund-item">
+                        <h4>📧 Refund Requests</h4>
+                        <p>To request a refund, contact our support team within 14 days of purchase.</p>
+                    </div>
+                </div>
+
+                <p class="refund-note">
+                    * All payments are processed through Paddle.com. For detailed refund policies, see our <a
+                        href="terms.html">Terms of Service</a>.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Tunely. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

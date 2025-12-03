@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Tunely</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        :root {
+            --primary: hsl(250, 84%, 54%);
+            --primary-light: hsl(250, 84%, 64%);
+            --accent-light: hsl(325, 78%, 66%);
+            --bg-primary: hsl(240, 10%, 6%);
+            --bg-secondary: hsl(240, 8%, 10%);
+            --text-primary: hsl(0, 0%, 98%);
+            --text-secondary: hsl(0, 0%, 75%);
+            --text-tertiary: hsl(0, 0%, 55%);
+            --border: hsl(240, 6%, 20%);
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            --space-2xl: 4rem;
+            --space-3xl: 6rem;
+            --radius-lg: 1rem;
+            --radius-full: 9999px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary-light), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .btn {
+            display: inline-flex;
+            padding: 1rem 2rem;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            text-decoration: none;
+            background: linear-gradient(135deg, var(--primary), hsl(325, 78%, 56%));
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.25rem var(--space-md);
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: inherit;
+            text-decoration: none;
+        }
+
+        main {
+            padding-top: 100px;
+            min-height: 100vh;
+            padding-bottom: var(--space-3xl);
+        }
+
+        .legal-content {
+            max-width: 800px;
+            margin: var(--space-3xl) auto;
+            padding: var(--space-2xl);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+        }
+
+        h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            text-align: center;
+            margin-bottom: var(--space-md);
+        }
+
+        .last-updated {
+            text-align: center;
+            color: var(--text-tertiary);
+            font-size: 0.9375rem;
+            margin-bottom: var(--space-3xl);
+            padding-bottom: var(--space-xl);
+            border-bottom: 1px solid var(--border);
+        }
+
+        section {
+            margin-bottom: var(--space-2xl);
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            color: var(--text-primary);
+            margin-top: var(--space-xl);
+            margin-bottom: var(--space-md);
+            padding-bottom: var(--space-sm);
+            border-bottom: 2px solid var(--primary);
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            margin-top: var(--space-lg);
+            margin-bottom: var(--space-sm);
+        }
+
+        p {
+            margin-bottom: var(--space-md);
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        ul {
+            margin: var(--space-md) 0;
+            padding-left: var(--space-xl);
+        }
+
+        ul li {
+            margin-bottom: var(--space-sm);
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        a {
+            color: var(--primary-light);
+            text-decoration: underline;
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            padding: var(--space-xl) 0;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.875rem;
+            color: var(--text-tertiary);
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span class="gradient-text">Tunely</span>
+            </a>
+            <a href="index.html#waitlist" class="btn">Join Waitlist</a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <article class="legal-content">
+                <h1>Privacy Policy</h1>
+                <p class="last-updated">Last updated: January 1, 2025</p>
+
+                <section>
+                    <h2>1. Personal Information We Collect</h2>
+                    <p>Tunely collects the following personal information:</p>
+                    <ul>
+                        <li><strong>Account information:</strong> Email address, name</li>
+                        <li><strong>Payment information:</strong> Payment method, billing address (processed through
+                            payment providers)</li>
+                        <li><strong>Usage information:</strong> Created projects, credit usage, service usage history
+                        </li>
+                        <li><strong>Technical information:</strong> IP address, browser type, access time</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>2. Purpose of Collection and Use</h2>
+                    <ul>
+                        <li>Service provision and operation</li>
+                        <li>Member management and identity verification</li>
+                        <li>Payment processing and billing</li>
+                        <li>Customer support and inquiry handling</li>
+                        <li>Service improvement and statistical analysis</li>
+                        <li>Marketing and promotions (with consent)</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>3. Retention and Use Period</h2>
+                    <p>
+                        Personal information is retained during the service usage period and destroyed without delay
+                        upon membership withdrawal.
+                        However, it will be retained for the required period if legally mandated:
+                    </p>
+                    <ul>
+                        <li>Records regarding contracts or subscription withdrawal: 5 years</li>
+                        <li>Records regarding payment and supply of goods: 5 years</li>
+                        <li>Records regarding consumer complaints or dispute resolution: 3 years</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>4. Disclosure to Third Parties</h2>
+                    <p>
+                        Tunely does not disclose user personal information to third parties in principle.
+                        Exceptions may include:
+                    </p>
+                    <ul>
+                        <li>User has given prior consent</li>
+                        <li>Disclosure is mandatory under law</li>
+                    </ul>
+
+                    <h3>4.1 Service Partnerships</h3>
+                    <p>We integrate with the following services to provide functionality:</p>
+                    <ul>
+                        <li><strong>Vercel:</strong> Application deployment</li>
+                        <li><strong>Supabase:</strong> Database services</li>
+                        <li><strong>Payment processors:</strong> Payment processing</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>5. Processing Entrustment</h2>
+                    <p>We entrust personal information processing as follows for better service provision:</p>
+                    <ul>
+                        <li><strong>AWS/Google Cloud:</strong> Server hosting and data storage</li>
+                        <li><strong>Email service providers:</strong> Notification and marketing email delivery</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>6. Destruction of Personal Information</h2>
+                    <p>
+                        Personal information is destroyed without delay when the collection and use purpose is achieved
+                        or the retention period expires.
+                        Electronic files are deleted in an unrecoverable manner, and paper documents are shredded or
+                        incinerated.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>7. User Rights</h2>
+                    <p>Users may exercise the following rights at any time:</p>
+                    <ul>
+                        <li>Request to view personal information</li>
+                        <li>Request to correct or delete personal information</li>
+                        <li>Request to suspend personal information processing</li>
+                        <li>Account deletion (membership withdrawal)</li>
+                    </ul>
+                    <p>
+                        Rights can be exercised directly in the settings page or by contacting customer support.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>8. Technical Measures for Privacy Protection</h2>
+                    <ul>
+                        <li>Encrypted password storage</li>
+                        <li>Secure data transmission via HTTPS</li>
+                        <li>Access control management and logging</li>
+                        <li>Regular security checks and updates</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>9. Cookie Usage</h2>
+                    <p>
+                        Tunely uses cookies to provide services.
+                        Cookies are used to maintain login status, save settings, etc.,
+                        and can be disabled through browser settings.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>10. Privacy Officer</h2>
+                    <p>
+                        For questions regarding personal information processing, please contact:
+                    </p>
+                    <p>
+                        <strong>Privacy Officer</strong><br>
+                        Email: <a href="mailto:privacy@tunely.app">privacy@tunely.app</a>
+                    </p>
+                </section>
+
+                <section>
+                    <h2>11. Privacy Policy Changes</h2>
+                    <p>
+                        This privacy policy may be revised according to changes in laws and services.
+                        Changes will be announced at least 7 days in advance, and significant changes 30 days in
+                        advance.
+                    </p>
+                </section>
+            </article>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Tunely. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
