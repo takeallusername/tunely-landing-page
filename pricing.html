@@ -131,8 +131,27 @@
         nav .logo {
             font-size: 1.5rem;
             font-weight: 800;
-            color: inherit;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: var(--space-lg);
+        }
+
+        nav .nav-link {
+            color: var(--text-secondary);
+            font-weight: 500;
             text-decoration: none;
+        }
+
+        nav .nav-link:hover {
+            color: var(--text-primary);
+        }
+
+        @media (max-width: 768px) {
+            nav .nav-links {
+                display: none;
+            }
         }
 
         main {
@@ -356,6 +375,11 @@
             <a href="index.html" class="logo">
                 <span class="gradient-text">Tunely</span>
             </a>
+            <div class="nav-links">
+                <a href="index.html#features" class="nav-link">Features</a>
+                <a href="pricing.html" class="nav-link">Pricing</a>
+                <a href="about.html" class="nav-link">About</a>
+            </div>
             <a href="index.html#waitlist" class="btn btn-primary">Join Waitlist</a>
         </div>
     </nav>

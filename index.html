@@ -368,6 +368,37 @@
             color: var(--text-tertiary);
         }
 
+        /* Demo Video Section */
+        .demo-section {
+            background: var(--bg-secondary);
+        }
+
+        .demo-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .demo-video-wrapper {
+            position: relative;
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: var(--bg-primary);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        .demo-video-wrapper video {
+            width: 100%;
+            display: block;
+        }
+
+        .demo-caption {
+            text-align: center;
+            margin-top: var(--space-lg);
+            font-size: 1rem;
+            color: var(--text-tertiary);
+        }
+
         /* FAQ */
         .faq-grid {
             display: grid;
@@ -558,7 +589,7 @@
             <div class="nav-links">
                 <a href="#features" class="nav-link">Features</a>
                 <a href="pricing.html" class="nav-link">Pricing</a>
-                <a href="#faq" class="nav-link">FAQ</a>
+                <a href="about.html" class="nav-link">About</a>
             </div>
 
             <div>
@@ -683,6 +714,29 @@
             </div>
         </section>
 
+        <!-- Demo Video Section -->
+        <section id="demo" class="section demo-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>See Tunely <span class="gradient-text">In Action</span></h2>
+                    <p>Watch how easy it is to build an app through conversation</p>
+                </div>
+
+                <div class="demo-container">
+                    <div class="demo-video-wrapper">
+                        <video controls playsinline poster="">
+                            <source src="demo.mov" type="video/quicktime">
+                            <source src="demo.mov" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <p class="demo-caption">
+                        A real demonstration of creating an app with Tunely's conversational interface
+                    </p>
+                </div>
+            </div>
+        </section>
+
         <!-- FAQ Section -->
         <section id="faq" class="section">
             <div class="container">
@@ -753,12 +807,13 @@
                     <div class="link-group">
                         <h4>Product</h4>
                         <a href="#features">Features</a>
+                        <a href="#demo">Demo</a>
                         <a href="pricing.html">Pricing</a>
-                        <a href="#faq">FAQ</a>
                     </div>
 
                     <div class="link-group">
-                        <h4>Legal</h4>
+                        <h4>Company</h4>
+                        <a href="about.html">About Us</a>
                         <a href="terms.html">Terms of Service</a>
                         <a href="privacy.html">Privacy Policy</a>
                     </div>
@@ -767,7 +822,7 @@
                         <h4>Connect</h4>
                         <a href="https://twitter.com" target="_blank">Twitter</a>
                         <a href="https://github.com" target="_blank">GitHub</a>
-                        <a href="mailto:hello@tunely.app">Contact</a>
+                        <a href="mailto:support@tunely.app">Contact</a>
                     </div>
                 </div>
             </div>

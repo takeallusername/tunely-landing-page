@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Tunely</title>
+    <meta name="description" content="Meet the team behind Tunely. We're building an AI app builder where you stay in control through Wireflow.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        :root {
+            --primary: hsl(250, 84%, 54%);
+            --primary-light: hsl(250, 84%, 64%);
+            --accent: hsl(325, 78%, 56%);
+            --accent-light: hsl(325, 78%, 66%);
+
+            --bg-primary: hsl(240, 10%, 6%);
+            --bg-secondary: hsl(240, 8%, 10%);
+            --bg-tertiary: hsl(240, 6%, 14%);
+
+            --text-primary: hsl(0, 0%, 98%);
+            --text-secondary: hsl(0, 0%, 75%);
+            --text-tertiary: hsl(0, 0%, 55%);
+
+            --border: hsl(240, 6%, 20%);
+            --border-light: hsl(240, 6%, 25%);
+
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            --space-2xl: 4rem;
+            --space-3xl: 6rem;
+
+            --radius-md: 0.75rem;
+            --radius-lg: 1rem;
+            --radius-xl: 1.5rem;
+            --radius-full: 9999px;
+
+            --transition-base: 250ms ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--space-md);
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        h3 {
+            font-size: clamp(1.25rem, 2vw, 1.5rem);
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: color var(--transition-base);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary-light), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: var(--radius-full);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            box-shadow: 0 4px 24px rgba(124, 58, 237, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(124, 58, 237, 0.6);
+        }
+
+        .btn-secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-secondary);
+            border-color: var(--border-light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-3xl) 0;
+        }
+
+        .card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 1.25rem;
+            padding-bottom: 1.25rem;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: var(--space-lg);
+        }
+
+        nav .nav-link {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        nav .nav-link:hover {
+            color: var(--text-primary);
+        }
+
+        /* Hero */
+        .hero {
+            padding: calc(80px + var(--space-3xl)) 0 var(--space-3xl);
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero p {
+            font-size: 1.375rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Section Header */
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto var(--space-3xl);
+        }
+
+        .section-header p {
+            font-size: 1.25rem;
+        }
+
+        /* Vision Section */
+        .vision-section {
+            background: var(--bg-secondary);
+        }
+
+        .vision-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-3xl);
+            align-items: center;
+        }
+
+        .vision-text p {
+            margin-bottom: var(--space-md);
+        }
+
+        .vision-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .vision-card {
+            padding: var(--space-xl);
+            border-radius: var(--radius-xl);
+        }
+
+        .vision-card .quote {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.5;
+            margin-bottom: var(--space-lg);
+        }
+
+        .vision-card .attribution {
+            font-size: 1rem;
+            color: var(--text-tertiary);
+        }
+
+        /* Wireflow Section */
+        .wireflow-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .wireflow-content > p {
+            font-size: 1.25rem;
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+        }
+
+        .wireflow-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-lg);
+        }
+
+        .wireflow-feature {
+            text-align: center;
+            padding: var(--space-xl);
+        }
+
+        .wireflow-feature .icon {
+            font-size: 3rem;
+            margin-bottom: var(--space-md);
+        }
+
+        .wireflow-feature h3 {
+            margin-bottom: var(--space-sm);
+        }
+
+        .wireflow-feature p {
+            font-size: 1rem;
+        }
+
+        /* Team Section */
+        .team-section {
+            background: var(--bg-secondary);
+        }
+
+        .team-grid {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .team-card {
+            text-align: center;
+            padding: var(--space-2xl);
+        }
+
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto var(--space-lg);
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .team-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: var(--space-xs);
+        }
+
+        .team-role {
+            font-size: 1rem;
+            color: var(--primary-light);
+            font-weight: 500;
+            margin-bottom: var(--space-md);
+        }
+
+        .team-card > p {
+            font-size: 1rem;
+        }
+
+        .team-links {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
+        }
+
+        .team-links a {
+            color: var(--text-tertiary);
+            font-size: 1.5rem;
+        }
+
+        .team-links a:hover {
+            color: var(--primary-light);
+        }
+
+        /* CTA Section */
+        .cta-card {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: var(--space-3xl);
+            border-radius: var(--radius-xl);
+            text-align: center;
+        }
+
+        .cta-card > p {
+            margin-bottom: var(--space-xl);
+        }
+
+        .cta-actions {
+            display: flex;
+            gap: var(--space-md);
+            justify-content: center;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            padding: var(--space-3xl) 0 var(--space-xl);
+            margin-top: var(--space-3xl);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 3fr;
+            gap: var(--space-3xl);
+            margin-bottom: var(--space-2xl);
+        }
+
+        .footer-brand .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: var(--space-md);
+        }
+
+        .tagline {
+            font-size: 1rem;
+            color: var(--text-tertiary);
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-xl);
+        }
+
+        .link-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+
+        .link-group h4 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .link-group a {
+            font-size: 0.9375rem;
+            color: var(--text-secondary);
+        }
+
+        .link-group a:hover {
+            color: var(--primary-light);
+        }
+
+        .footer-bottom {
+            padding-top: var(--space-xl);
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            font-size: 0.875rem;
+            color: var(--text-tertiary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav .nav-links {
+                display: none;
+            }
+
+            .vision-content {
+                grid-template-columns: 1fr;
+            }
+
+            .wireflow-features {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-actions {
+                flex-direction: column;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-links {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span class="gradient-text">Tunely</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html#features" class="nav-link">Features</a>
+                <a href="pricing.html" class="nav-link">Pricing</a>
+                <a href="about.html" class="nav-link">About</a>
+            </div>
+
+            <div>
+                <a href="index.html#waitlist" class="btn btn-primary">Join Waitlist</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Building the Future Where <span class="gradient-text">You Stay in Control</span></h1>
+                    <p>
+                        AI app builders are everywhere. But we believe the person with the idea
+                        should always remain in the driver's seat.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vision Section -->
+        <section class="section vision-section">
+            <div class="container">
+                <div class="vision-content">
+                    <div class="vision-text">
+                        <h2>Why We Built <span class="gradient-text">Tunely</span></h2>
+                        <p>
+                            Most AI builders treat users as passengers. You type a prompt, hope for the best,
+                            and get whatever the AI decides to give you. If it's not right, you start over.
+                        </p>
+                        <p>
+                            We believe this is backwards. <strong>Your ideas, your vision, your decisions</strong>
+                            should drive the process. That's why we created Wireflow.
+                        </p>
+                    </div>
+                    <div class="vision-visual">
+                        <div class="vision-card glass">
+                            <p class="quote">
+                                "The best AI doesn't replace human judgment. It amplifies human intent."
+                            </p>
+                            <p class="attribution">Our founding principle</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Wireflow Section -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Wireflow: Our <span class="gradient-text">Single Source of Truth</span></h2>
+                </div>
+
+                <div class="wireflow-content">
+                    <p>
+                        Wireflow is the core of Tunely. It's a visual, editable blueprint that shows
+                        exactly what your app will do before any code is written.
+                    </p>
+
+                    <div class="wireflow-features">
+                        <div class="card wireflow-feature">
+                            <div class="icon">🗺️</div>
+                            <h3>Visual Blueprint</h3>
+                            <p>See every screen, flow, and interaction mapped out clearly</p>
+                        </div>
+
+                        <div class="card wireflow-feature">
+                            <div class="icon">✏️</div>
+                            <h3>Fully Editable</h3>
+                            <p>Modify any part through conversation before building</p>
+                        </div>
+
+                        <div class="card wireflow-feature">
+                            <div class="icon">🔄</div>
+                            <h3>Always in Sync</h3>
+                            <p>Changes to Wireflow instantly reflect in the generated app</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section id="team" class="section team-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Meet the <span class="gradient-text">Founder</span></h2>
+                    <p>The person behind Tunely</p>
+                </div>
+
+                <div class="team-grid">
+                    <div class="card team-card">
+                        <div class="team-avatar">KY</div>
+                        <h3>Kwon Yong Hyun</h3>
+                        <p class="team-role">Founder & CEO</p>
+                        <p>
+                            Building tools that put creators in control.
+                            Passionate about making technology accessible.
+                        </p>
+                        <div class="team-links">
+                            <a href="mailto:support@tunely.app" title="Email">📧</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="section">
+            <div class="container">
+                <div class="cta-card glass">
+                    <h2>Ready to Build <span class="gradient-text">Your Way</span>?</h2>
+                    <p>
+                        Join the waitlist and experience app development where you stay in control.
+                    </p>
+                    <div class="cta-actions">
+                        <a href="index.html#waitlist" class="btn btn-primary">Join Waitlist</a>
+                        <a href="index.html#demo" class="btn btn-secondary">Watch Demo</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="gradient-text">Tunely</span>
+                    </div>
+                    <p class="tagline">The future of app development through conversation</p>
+                </div>
+
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Product</h4>
+                        <a href="index.html#features">Features</a>
+                        <a href="index.html#demo">Demo</a>
+                        <a href="pricing.html">Pricing</a>
+                    </div>
+
+                    <div class="link-group">
+                        <h4>Company</h4>
+                        <a href="about.html">About Us</a>
+                        <a href="terms.html">Terms of Service</a>
+                        <a href="privacy.html">Privacy Policy</a>
+                    </div>
+
+                    <div class="link-group">
+                        <h4>Connect</h4>
+                        <a href="https://twitter.com" target="_blank">Twitter</a>
+                        <a href="https://github.com" target="_blank">GitHub</a>
+                        <a href="mailto:support@tunely.app">Contact</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Tunely. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
